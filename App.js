@@ -12,25 +12,6 @@ import Instana from '@instana/react-native-agent';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-
-  var options = {}
-
-  options.enableCrashReporting = true;
-  Instana.setup('kC6DlN6kSfCadu9dx_SvpA', 'https://eum-coral-saas.instana.io/mobile', options);
-
-
- /* Instana.setIgnoreURLsByRegex([
-    'http://localhost:8081.*',       // Ignora todas las rutas de usuarios
-    'http://localhost:8097.*',    // Ignora rutas que terminan con IDs numéricos
-  ]);
-*/
-
-  Instana.setIgnoreURLsByRegex([
-    'http://localhost:8081.*',       // Ignora todas las rutas de usuarios
-    'http://localhost:8097.*',    // Ignora rutas que terminan con IDs numéricos
-  ]);
-
-
   return (
     <Provider store={store}>  {/* Asegúrate de envolver tu aplicación en el Provider */}
       <NavigationContainer>

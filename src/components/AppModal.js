@@ -15,6 +15,7 @@ import {CreateQuote} from '../../util/Helpers';
 import {useDispatch, useSelector} from 'react-redux';
 import uuid from 'react-native-uuid';
 import {MODAL} from '../../sclice/crudSclice';
+import Instana from '@instana/react-native-agent';
 
 const AppModal = ({handleCloseModal}) => {
   const showModal = useSelector(state => state.quotes.modalOpen);
@@ -23,6 +24,7 @@ const AppModal = ({handleCloseModal}) => {
   const [text, setText] = useState();
   const dispatch = useDispatch();
   handleAddQuote = () => {
+    
     let data = {
       text,
       author,

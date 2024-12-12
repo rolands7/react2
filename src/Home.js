@@ -24,6 +24,27 @@ const Home = () => {
   Instana.setView('HomeView');
   // Variables de tiempo
   const startTime = performance.now(); // Inicio de la ejecución de la función
+
+      // Llamada a la API para cargar productos
+     
+      const fetchProducts = async () => {
+        try {
+          const response = await fetch('https://fakestoreapi.com/products');  // GET request
+          if (!response.ok) {
+            throw new Error('Error al obtener productos');
+          }
+          const data = await response.json();
+          setProducts(data);  // Updates the state with the fetched products
+        } catch (error) {
+          Alert.alert('Error', error.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+      
+      fetchProducts();
+
+
   const data = useSelector(state => state.quotes.quotes);
   let dispatch = useDispatch();
   let _renderList = ({item, _}) => <List item={item} />;
@@ -37,6 +58,7 @@ const Home = () => {
   let handleCloseUpdateModal = () => {
     dispatch(UPDATE_MODAL(false));
   };
+
   const endTime = performance.now(); // Fin de la ejecución de la función
   const duration = endTime - startTime; // Duración en milisegundos
     // Log del tiempo de duración
@@ -44,7 +66,7 @@ const Home = () => {
 
   Instana.reportEvent('load Home', {
     duration: duration,
-    viewName: 'HomeView',
+//    viewName: 'HomeView',
     meta: {
       duration: String(duration),
       viewName: 'HomeView'

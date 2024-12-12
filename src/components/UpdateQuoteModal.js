@@ -14,6 +14,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {CreateQuote, UpdateQuote} from '../../util/Helpers';
 import {useDispatch, useSelector} from 'react-redux';
 import {UPDATE_MODAL} from '../../sclice/crudSclice';
+import Instana from '@instana/react-native-agent';
 
 const UpdateQuoteModal = ({handleCloseUpdateModal}) => {
   const showModal = useSelector(state => state.quotes.updateModalOpen);
@@ -23,6 +24,7 @@ const UpdateQuoteModal = ({handleCloseUpdateModal}) => {
   const [text, setText] = useState();
   const dispatch = useDispatch();
   let handleUpdateQuote = () => {
+    
     let data = {
       text,
       author,

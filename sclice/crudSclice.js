@@ -49,7 +49,8 @@ const Quote = createReducer(initialState, builder => {
 
 
   builder.addCase(CREATE_NEW, (state, action) => {
-    Instana.setView('CrearCitaView');
+   //
+    Instana.setView('AddView');
     // Variables de tiempo
     const startTime = performance.now(); // Inicio de la ejecución de la función
     let prev = JSON.parse(JSON.stringify(state.quotes));
@@ -66,10 +67,9 @@ const Quote = createReducer(initialState, builder => {
 
     Instana.reportEvent('crearCita', {
       duration: duration,
-      viewName: 'CrearCitaView',
       meta: {
         duration: String(duration),
-        viewName: 'CrearCitaView'
+        viewName: 'AddView'
       },
     });
     
@@ -83,7 +83,7 @@ const Quote = createReducer(initialState, builder => {
   // Update one
 
   builder.addCase(UPDATE_ONE, (state, action) => {
-    Instana.setView('ActualizarView');
+    Instana.setView('UpdateView');
     // Variables de tiempo
     const startTime = performance.now(); // Inicio de la ejecución de la función    
     let prev = JSON.parse(JSON.stringify(state.quotes));
@@ -98,7 +98,7 @@ const Quote = createReducer(initialState, builder => {
       duration: duration,
       meta: {
         duration: String(duration),
-        viewName: 'ActualizarView'
+        viewName: 'UpdateView'
       },
     });
     return {
@@ -110,7 +110,7 @@ const Quote = createReducer(initialState, builder => {
   // Delete one
 
   builder.addCase(REMOVE_ONE, (state, action) => {
-    Instana.setView('EliminarView');
+    Instana.setView('DeleteView');
     const startTime = performance.now(); // Inicio de la ejecución de la función  
     let prev = JSON.parse(JSON.stringify(state.quotes));
     const index = prev.findIndex(obj => obj.id === action?.payload);
@@ -119,26 +119,16 @@ const Quote = createReducer(initialState, builder => {
     const duration = endTime - startTime; // Duración en milisegundos
       // Log del tiempo de duración
       console.log(`Tiempo de duración de la operación Eliminar: ${duration.toFixed(2)} ms`);
-/*
-    Instana.reportEvent('eliminarCita', {
-      duration: duration,
-      viewName: 'EliminarView',
-      meta: {
-        duration: String(duration),
-        viewName: 'EliminarView',
-      },
-      error: 'un error de prueba',
-    });
-*/
+
     try {
       // Simulamos una operación que podría fallar
       throw new Error('Hubo un problema al eliminar la cita');
     } catch (err) {
       Instana.reportEvent('eliminarCita', {
         duration: duration, 
-        viewName: 'EliminarView',
         meta: {
           duration: String(duration),
+          viewName: 'DeleteView'
         },
         error: {
           message: err.message, // Mensaje del error

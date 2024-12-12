@@ -5,6 +5,7 @@ import {DeletQuote} from '../../util/Helpers';
 import {PLACEHOLDER_DATA, UPDATE_MODAL} from '../../sclice/crudSclice';
 
 export default function List({item}) {
+
   const placehoderData = useSelector(state => state.quotes.PlaceHolder);
   let dispatch = useDispatch();
   let onPressRemove = () => {
@@ -16,6 +17,8 @@ export default function List({item}) {
       dispatch(UPDATE_MODAL(true));
     }
   };
+
+
   return (
     <View
       style={{

@@ -19,10 +19,22 @@ export default function Login({ navigation }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+
+
   Instana.setView('LoginView');
 
 
   const handleLogin = async () => {
+
+    var options = {}
+    options.enableCrashReporting = true;
+    Instana.setup('kC6DlN6kSfCadu9dx_SvpA', 'https://eum-coral-saas.instana.io/mobile', options);
+    Instana.setIgnoreURLsByRegex([
+      'http://localhost:8081.*',       // Ignora todas las rutas de usuarios
+      'http://localhost:8097.*',    // Ignora rutas que terminan con IDs numéricos
+    ]);
+
+    Instana.setView('LoginView');
   // Variables de tiempo
   const startTime = performance.now(); // Inicio de la ejecución de la función
 
