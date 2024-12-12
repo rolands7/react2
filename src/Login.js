@@ -28,7 +28,7 @@ export default function Login({ navigation }) {
 
     var options = {}
     options.enableCrashReporting = true;
-    Instana.setup('kC6DlN6kSfCadu9dx_SvpA', 'https://eum-coral-saas.instana.io/mobile', options);
+    Instana.setup('WfqrTtU2RN-wvxYQp4VOJA', 'https://eum-red-saas.instana.io/mobile', options);
     Instana.setIgnoreURLsByRegex([
       'http://localhost:8081.*',       // Ignora todas las rutas de usuarios
       'http://localhost:8097.*',    // Ignora rutas que terminan con IDs numéricos
