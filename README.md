@@ -3,6 +3,19 @@
 # Guia para despliegue demo aplicacion mobile con Reactnative
 
 
+## Requisitos
+
+* Nodejs v20.11.1
+* Java v17.0.13
+
+## Instrucciones para el Emulador Recomendado
+
+Emulador Sugerido:
+
+* Dispositivo: Google Pixel 5
+* Versión de Android: API 34 (Android 14)
+* Sistema de Desarrollo: Android Studio / Android Emulator
+
 ## Paso 1: Instalación
 
 	# Clonar repositorio
